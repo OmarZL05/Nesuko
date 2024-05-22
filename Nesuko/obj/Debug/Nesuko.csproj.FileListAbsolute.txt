@@ -1,0 +1,10 @@
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\bin\Debug\Nesuko.exe.config
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\bin\Debug\Nesuko.exe
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\bin\Debug\Nesuko.pdb
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.csprojResolveAssemblyReference.cache
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.Properties.Resources.resources
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.csproj.GenerateResource.Cache
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.exe
+c:\users\omarz\documents\visual studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.pdb
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.GameScreen.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Nesuko\Nesuko\obj\Debug\Nesuko.StartScreen.resources
