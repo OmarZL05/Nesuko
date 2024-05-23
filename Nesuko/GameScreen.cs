@@ -13,12 +13,9 @@ namespace Nesuko
     public partial class GameScreen : Form
     {
 
-        private static System.Drawing.Color RedColor = System.Drawing.Color.Red;
-        private static System.Drawing.Color WhiteColor = System.Drawing.Color.White;
-
         private int[,] cells;
 
-        private TextBox[,] celdas = new TextBox[4,4];
+        private TextBox[,] celdas = new TextBox[4, 4];
 
         public GameScreen()
         {
@@ -43,7 +40,8 @@ namespace Nesuko
 
         }
 
-        private void GameScreen_Load(object sender, EventArgs e) {
+        private void GameScreen_Load(object sender, EventArgs e)
+        {
             celdas[0, 0] = box1_1;
             celdas[0, 1] = box1_2;
             celdas[0, 2] = box1_3;
@@ -52,6 +50,14 @@ namespace Nesuko
             celdas[1, 1] = box2_2;
             celdas[1, 2] = box2_3;
             celdas[1, 3] = box2_4;
+            celdas[2, 0] = box3_1;
+            celdas[2, 1] = box3_2;
+            celdas[2, 2] = box3_3;
+            celdas[2, 3] = box3_4;
+            celdas[3, 0] = box4_1;
+            celdas[3, 1] = box4_2;
+            celdas[3, 2] = box4_3;
+            celdas[3, 3] = box4_4;
         }
 
         private void fila_1(TextBox caja)
@@ -69,12 +75,12 @@ namespace Nesuko
                 caja.BackColor = System.Drawing.Color.Red;
                 box1_1.BackColor = System.Drawing.Color.Red;
             }
-            
+
             if (caja.Text == box1_2.Text && caja.Name != box1_2.Name)
             {
                 caja.BackColor = System.Drawing.Color.Red;
                 box1_2.BackColor = System.Drawing.Color.Red;
-            } 
+            }
 
             if (caja.Text == box1_3.Text && caja.Name != box1_3.Name)
             {
@@ -89,24 +95,6 @@ namespace Nesuko
             }
         }
 
-        /*private void nuevaFuncion(TextBox caja)
-        {
-            caja.BackColor = System.Drawing.Color.White;
-            for (int i = 0; i < 4; i++)
-            {
-                if (celdas[0, i].Name != caja.Name && celdas[0, i].Text.Length > 0 && caja.Text.Length > 0 && celdas[0, i].Text == caja.Text)
-                {
-                    celdas[0, i].BackColor = System.Drawing.Color.Red;
-                    caja.BackColor = System.Drawing.Color.Red;
-                }
-                else if (celdas[0, i].Text.Length > 0 && caja.Text.Length > 0 && celdas[0, i].Name != caja.Name && i<3 && celdas[0, i] != celdas[0, i+1])
-                {
-                    celdas[0, i].BackColor = System.Drawing.Color.White;
-                }
-            }
-            
-        }*/
-
         private int cantidadIguales(int posX, TextBox caja, TextBox[,] cajas)
         {
             int iguales = 0;
@@ -115,23 +103,63 @@ namespace Nesuko
                 if (caja != cajas[posX, i] && caja.Text.Length > 0 && cajas[posX, i].Text == caja.Text)
                 {
                     iguales++;
-                    caja.BackColor = RedColor;
+                    caja.BackColor = Color.Red;
                 }
             }
             return iguales;
+        }
+
+        private void ControlMagic(int posX, int posY)
+        {
+            int igualesX = 0;
+            int igualesY = 0;
+            int i = 0;
+            //  if (celdas[i, j+1] != celdas[i, j] && celdas[i, j+1].Text.Length > 0 && celdas[i, j+1].Text == celdas[i, j].Text)
+
+            // Hacer verificacion en X
+            for (i = 0; i < 4; i++)
+            {
+                if (celdas[posX, i] != celdas[posX, posY] && celdas[posX, posY].Text.Length > 0 && celdas[posX, i].Text == celdas[posX, posY].Text)
+                {
+                    celdas[posX, i].BackColor = Color.Red;
+                    igualesX++;
+                }
+                else if(igualesX == 1 )
+                {
+                    celdas[posX, i].BackColor = Color.White;
+                    igualesX++;
+                }
+            }
+
+            // Hacer verificacion en Y
+            for (i = 0; i < 4; i++)
+            {
+                if (celdas[i, posY] != celdas[posX, posY] && celdas[posX, posY].Text.Length > 0  && celdas[i, posY].Text == celdas[posX, posY].Text)
+                {
+                    celdas[i, posY].BackColor = Color.Red;
+                    igualesY++;
+                }
+                else if (igualesY == 1)
+                {
+                    celdas[i, posY].BackColor = Color.White;
+                    igualesY++;
+                }
+            }
+
         }
 
 
         private void verificarIgualdades(int posX, TextBox[,] cajas)
         {
 
-            for (int i = 0; i < 4; i++) {
-                if (cantidadIguales(posX, cajas[posX, i], cajas) < 1) 
+            for (int i = 0; i < 4; i++)
+            {
+                if (cantidadIguales(posX, cajas[posX, i], cajas) < 1)
                 {
-                    cajas[posX, i].BackColor = WhiteColor;
+                    cajas[posX, i].BackColor = Color.Pink;
                 }
             }
-            
+
 
         }
 
@@ -139,25 +167,29 @@ namespace Nesuko
         private void box1_1_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 0] = box1_1;
-            verificarIgualdades(0, celdas);
+            // verificarIgualdades(0, celdas); 
+            ControlMagic(0, 0);
         }
 
         private void box1_2_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 1] = box1_2;
-            verificarIgualdades(0, celdas);
+            // // verificarIgualdades(0, celdas); 
+            ControlMagic(0, 1);
         }
 
         private void box1_3_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 2] = box1_3;
-            verificarIgualdades(0, celdas);
+            // verificarIgualdades(0, celdas); 
+            ControlMagic(0, 2);
         }
 
         private void box1_4_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 3] = box1_4;
-            verificarIgualdades(0, celdas);
+            // verificarIgualdades(0, celdas); 
+            ControlMagic(0, 3);
         }
 
         // Seccion 2:
@@ -165,25 +197,29 @@ namespace Nesuko
         private void box2_1_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 0] = box2_1;
-            verificarIgualdades(1, celdas);
+            // verificarIgualdades(1, celdas); 
+            ControlMagic(1, 0);
         }
 
         private void box2_2_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 1] = box2_2;
-            verificarIgualdades(1, celdas);
+            // verificarIgualdades(1, celdas); 
+            ControlMagic(1, 1);
         }
 
         private void box2_3_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 2] = box2_3;
-            verificarIgualdades(1, celdas);
+            // verificarIgualdades(1, celdas); 
+            ControlMagic(1, 2);
         }
 
         private void box2_4_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 3] = box2_4;
-            verificarIgualdades(1, celdas);
+            // verificarIgualdades(1, celdas); 
+            ControlMagic(1, 3);
         }
 
         // Seccion 3:
@@ -191,25 +227,29 @@ namespace Nesuko
         private void box3_1_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 0] = box3_1;
-            verificarIgualdades(2, celdas);
+            // verificarIgualdades(2, celdas); 
+            ControlMagic(2, 0);
         }
 
         private void box3_2_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 1] = box3_2;
-            verificarIgualdades(2, celdas);
+            // verificarIgualdades(2, celdas); 
+            ControlMagic(2, 1);
         }
 
         private void box3_3_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 2] = box3_3;
-            verificarIgualdades(2, celdas);
+            // verificarIgualdades(2, celdas); 
+            ControlMagic(2, 2);
         }
 
         private void box3_4_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 3] = box3_4;
-            verificarIgualdades(2, celdas);
+            // verificarIgualdades(2, celdas);
+            ControlMagic(2, 3);
         }
 
         // Seccion 4:
@@ -217,27 +257,31 @@ namespace Nesuko
         private void box4_1_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 0] = box4_1;
-            verificarIgualdades(3, celdas);
+            // verificarIgualdades(3, celdas); 
+            ControlMagic(3, 0);
         }
 
         private void box4_2_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 1] = box4_2;
-            verificarIgualdades(3, celdas);
+            // verificarIgualdades(3, celdas); 
+            ControlMagic(3,1);
         }
 
         private void box4_3_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 2] = box4_3;
-            verificarIgualdades(3, celdas);
+            // verificarIgualdades(3, celdas);
+            ControlMagic(3,2);
         }
 
         private void box4_4_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 3] = box4_4;
-            verificarIgualdades(3, celdas);
+            // verificarIgualdades(3, celdas); 
+            ControlMagic(3,3);
         }
 
-        
+
     }
 }
