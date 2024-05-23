@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+
             this.box1_1 = new System.Windows.Forms.TextBox();
             this.box4_3 = new System.Windows.Forms.TextBox();
             this.box4_4 = new System.Windows.Forms.TextBox();
@@ -373,6 +374,7 @@
         private System.Windows.Forms.TextBox box3_4;
         private System.Windows.Forms.TextBox box4_1;
         private System.Windows.Forms.TextBox box4_2;
+
         private System.Windows.Forms.Label label1;
 
     }
