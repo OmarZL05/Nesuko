@@ -111,41 +111,34 @@ namespace Nesuko
 
         private void ControlMagic(int posX, int posY)
         {
-            int igualesX = 0;
-            int igualesY = 0;
-            int i = 0;
-            //  if (celdas[i, j+1] != celdas[i, j] && celdas[i, j+1].Text.Length > 0 && celdas[i, j+1].Text == celdas[i, j].Text)
+            //     (0) (1) (2) (3)
+            // (0) [1] [1] [v] [v]
+            // (1) [v] [v] [v] [v]
+            // (2) [v] [v] [v] [v]
+            // (3) [1] [v] [v] [v]
 
-            // Hacer verificacion en X
-            for (i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (celdas[posX, i] != celdas[posX, posY] && celdas[posX, posY].Text.Length > 0 && celdas[posX, i].Text == celdas[posX, posY].Text)
+                if (celdas[posX, posY].Text.Length < 1) {
+                    celdas[posX, posY].BackColor = Color.White;
+                    return;
+                }
+
+
+                if (celdas[posX, posY] != celdas[posX, i] && celdas[posX, posY].Text == celdas[posX, i].Text)
                 {
+                    celdas[posX, posY].BackColor = Color.Red;
                     celdas[posX, i].BackColor = Color.Red;
-                    igualesX++;
                 }
-                else if(igualesX == 1 )
-                {
-                    celdas[posX, i].BackColor = Color.White;
-                    igualesX++;
-                }
-            }
 
-            // Hacer verificacion en Y
-            for (i = 0; i < 4; i++)
-            {
-                if (celdas[i, posY] != celdas[posX, posY] && celdas[posX, posY].Text.Length > 0  && celdas[i, posY].Text == celdas[posX, posY].Text)
+                if (celdas[posX, posY] != celdas[i, posY] && celdas[posX, posY].Text == celdas[i, posY].Text)
                 {
+                    celdas[posX, posY].BackColor = Color.Red;
                     celdas[i, posY].BackColor = Color.Red;
-                    igualesY++;
                 }
-                else if (igualesY == 1)
-                {
-                    celdas[i, posY].BackColor = Color.White;
-                    igualesY++;
-                }
-            }
 
+               
+            }
         }
 
 
