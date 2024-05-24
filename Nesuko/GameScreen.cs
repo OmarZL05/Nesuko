@@ -17,21 +17,7 @@ namespace Nesuko
         public GameScreen()
         {
             InitializeComponent();
-        }
 
-        private void box_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            int value;
-            int.TryParse(e.KeyChar.ToString(), out value);
-
-            if (!char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar) || (char.IsDigit(e.KeyChar) && (value < 1 || value > 4))))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void GameScreen_Load(object sender, EventArgs e)
-        {
             celdas[0, 0] = box1_1;
             celdas[0, 1] = box1_2;
             celdas[0, 2] = box1_3;
@@ -48,86 +34,98 @@ namespace Nesuko
             celdas[3, 1] = box4_2;
             celdas[3, 2] = box4_3;
             celdas[3, 3] = box4_4;
+
+            celdas[0, 0].ReadOnly = true;
+            celdas[0, 0].BackColor = Colores.soloLectura;
+            celdas[0, 0].Text = 1 + "";
+
+            celdas[3, 3].ReadOnly = true;
+            celdas[3, 3].BackColor = Colores.soloLectura;
+            celdas[3, 3].Text = 4 + "";
+
+        }
+
+        private void box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int value;
+            int.TryParse(e.KeyChar.ToString(), out value);
+
+            if (!char.IsControl(e.KeyChar) && (!char.IsDigit(e.KeyChar) || (char.IsDigit(e.KeyChar) && (value < 1 || value > 4))))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void GameScreen_Load(object sender, EventArgs e)
+        {
         }
 
         private void ControlMagic(int posX, int posY)
         {
-            //     (0) (1) (2) (3)
-            // (0) [1] [1] [v] [v]
-            // (1) [v] [v] [v] [v]
-            // (2) [v] [v] [v] [v]
-            // (3) [1] [v] [v] [v]
-            
-            /*for (int i = 0; i < 4; i++)
-            {
-                if (celdas[posX, posY] == celdas[posX, i] || celdas[posX, posY] == celdas[i, posY])
-                {
-                    return;
-                }
-
-                if (celdas[posX, posY].Text.Length < 1)
-                {
-                    celdas[posX, posY].BackColor = Color.White;
-                }
-                else
-                {
-                    celdas[posX, i].BackColor = Color.Pink;
-                    celdas[i, posY].BackColor = Color.Pink;
-                    if (celdas[posX, posY].Text == celdas[posX, i].Text)
-                    {
-                        celdas[posX, posY].BackColor = Color.Red;
-                        celdas[posX, i].BackColor = Color.Red;
-                    }
-
-                    if (celdas[posX, posY].Text == celdas[i, posY].Text)
-                    {
-                        celdas[posX, posY].BackColor = Color.Red;
-                        celdas[i, posY].BackColor = Color.Red;
-                    }
-                    
-                }
-            } */
-
-           
             int x=0,y=0;
             int iguales;
+            int win = 0;
             while (x < 4 && y < 4) 
             {
                 iguales = 0;
                 if (celdas[x, y].Text.Length > 0) 
                 {
-                    // celdas[x, y].Text = 1
                     for (int i = 0; i < 4; i++)
                     {
                         if (celdas[x, y].Name != celdas[x, i].Name && celdas[x, y].Text == celdas[x, i].Text)
                         {
-                            celdas[x, y].BackColor = Color.Red;
-                            celdas[x, i].BackColor = Color.Red;
+                            celdas[x, y].BackColor = Colores.sonIguales;
+                            celdas[x, i].BackColor = Colores.sonIguales;
                             iguales += 2;
                         }
 
                         if (celdas[x, y].Name != celdas[i, y].Name && celdas[x, y].Text == celdas[i, y].Text)
                         {
-                            celdas[x, y].BackColor = Color.Red;
-                            celdas[i, y].BackColor = Color.Red;
+                            celdas[x, y].BackColor = Colores.sonIguales;
+                            celdas[i, y].BackColor = Colores.sonIguales;
                             iguales += 2;
                         }
                     }
 
                 }
 
-                if (iguales < 2) 
+                if (iguales < 2 && celdas[x, y].BackColor == Colores.sonIguales && !celdas[x, y].ReadOnly) 
                 {
-                    celdas[x, y].BackColor = Color.Pink;
+                    celdas[x, y].BackColor = Color.White;
+                }
+                else if (iguales < 2 && celdas[x, y].ReadOnly)
+                {
+                    celdas[x, y].BackColor = Colores.soloLectura;
+                }
+                
+
+                if (celdas[x, y].BackColor == Colores.sonIguales)
+                {
+                    win--;
+                }
+                else if (celdas[x, y].BackColor != Colores.sonIguales && celdas[x, y].Text.Length > 0)
+                {
+                    win++;
+
                 }
 
                 y++;
                 if (y == 4) {
                     x++;
                     y = 0;
-                }   
+                }
+
+
             }
 
+            Console.WriteLine(win);
+            if (win == 16) { 
+                using (WinScreen winScreen = new WinScreen() ) {
+                    this.Hide();
+                    winScreen.ShowDialog();
+                    this.Dispose();
+                }
+            }
 
         }
 

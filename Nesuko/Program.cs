@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,5 +20,12 @@ namespace Nesuko
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartScreen() );
         }
+    }
+
+    public static class Colores
+    {
+        public static System.Drawing.Color soloLectura = System.Drawing.Color.Gray;
+        public static System.Drawing.Color sonIguales = System.Drawing.Color.Red;
+
     }
 }
