@@ -18,3 +18,4 @@ C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.Properties.Resources.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.StartScreen.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.csproj.GenerateResource.Cache
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.WinScreen.resources

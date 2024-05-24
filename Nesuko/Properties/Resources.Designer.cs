@@ -59,14 +59,5 @@ namespace Nesuko.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a .
-        /// </summary>
-        internal static string Players {
-            get {
-                return ResourceManager.GetString("Players", resourceCulture);
-            }
-        }
     }
 }

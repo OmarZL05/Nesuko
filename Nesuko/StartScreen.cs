@@ -21,8 +21,10 @@ namespace Nesuko
         {
             using (GameScreen gameScreen = new GameScreen())
             {
+                this.Hide();
                 gameScreen.ShowDialog();
             }
+            this.Show();
         }
 
         private void MyForm_Load(object sender, EventArgs e)

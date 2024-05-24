@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace Nesuko
 {
-     
     static class Program
     {
 
