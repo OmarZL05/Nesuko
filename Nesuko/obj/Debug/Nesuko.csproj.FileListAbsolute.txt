@@ -14,8 +14,8 @@ C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\bin\Debug\Nesuko.exe
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\bin\Debug\Nesuko.pdb
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.csprojResolveAssemblyReference.cache
-C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.GameScreen.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.Properties.Resources.resources
-C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.StartScreen.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.csproj.GenerateResource.Cache
-C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.WinScreen.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.ScreenGame.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.ScreenStart.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\GitNesuko\Nesuko\obj\Debug\Nesuko.ScreenWin.resources

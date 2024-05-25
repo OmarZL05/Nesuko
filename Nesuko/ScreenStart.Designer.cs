@@ -1,6 +1,6 @@
 ﻿namespace Nesuko
 {
-    partial class StartScreen
+    partial class ScreenStart
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenStart));
             this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,11 +64,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "A New Sudoku";
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // StartScreen
+            // ScreenStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,10 +73,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.label1);
-            this.Name = "StartScreen";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ScreenStart";
             this.Text = "Nesuko";
             this.Load += new System.EventHandler(this.MyForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,7 +87,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

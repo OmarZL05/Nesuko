@@ -10,21 +10,28 @@ using System.Windows.Forms;
 
 namespace Nesuko
 {
-    public partial class StartScreen : Form
+    public partial class ScreenStart : Form
     {
-        public StartScreen()
+        public ScreenStart()
         {
             InitializeComponent();
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            using (GameScreen gameScreen = new GameScreen())
+            using (ScreenGame gameScreen = new ScreenGame())
             {
                 this.Hide();
                 gameScreen.ShowDialog();
             }
-            this.Show();
+            try
+            {
+                this.Show();
+            }
+            catch (ObjectDisposedException) { 
+
+            }
+            
         }
 
         private void MyForm_Load(object sender, EventArgs e)

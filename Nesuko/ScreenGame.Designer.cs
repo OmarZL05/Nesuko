@@ -1,6 +1,6 @@
 ﻿namespace Nesuko
 {
-    partial class GameScreen
+    partial class ScreenGame
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.box1_1 = new System.Windows.Forms.TextBox();
             this.box4_3 = new System.Windows.Forms.TextBox();
             this.box4_4 = new System.Windows.Forms.TextBox();
@@ -46,11 +45,16 @@
             this.box3_4 = new System.Windows.Forms.TextBox();
             this.box4_1 = new System.Windows.Forms.TextBox();
             this.box4_2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_Time = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbl_Time);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.box1_1);
             this.panel1.Controls.Add(this.box4_3);
@@ -70,17 +74,9 @@
             this.panel1.Controls.Add(this.box4_2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(390, 268);
+            this.panel1.Size = new System.Drawing.Size(390, 328);
             this.panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // box1_1
             // 
@@ -89,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box1_1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box1_1.Location = new System.Drawing.Point(95, 0);
+            this.box1_1.Location = new System.Drawing.Point(129, 0);
             this.box1_1.MaxLength = 1;
             this.box1_1.Name = "box1_1";
             this.box1_1.Size = new System.Drawing.Size(60, 55);
@@ -105,7 +101,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box4_3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box4_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box4_3.Location = new System.Drawing.Point(227, 198);
+            this.box4_3.Location = new System.Drawing.Point(261, 183);
             this.box4_3.MaxLength = 1;
             this.box4_3.Name = "box4_3";
             this.box4_3.Size = new System.Drawing.Size(60, 55);
@@ -121,7 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box4_4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box4_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box4_4.Location = new System.Drawing.Point(293, 198);
+            this.box4_4.Location = new System.Drawing.Point(327, 183);
             this.box4_4.MaxLength = 1;
             this.box4_4.Name = "box4_4";
             this.box4_4.Size = new System.Drawing.Size(60, 55);
@@ -137,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box1_2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box1_2.Location = new System.Drawing.Point(161, 0);
+            this.box1_2.Location = new System.Drawing.Point(195, 0);
             this.box1_2.MaxLength = 1;
             this.box1_2.Name = "box1_2";
             this.box1_2.Size = new System.Drawing.Size(60, 55);
@@ -153,7 +149,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box1_3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box1_3.Location = new System.Drawing.Point(227, 0);
+            this.box1_3.Location = new System.Drawing.Point(261, 0);
             this.box1_3.MaxLength = 1;
             this.box1_3.Name = "box1_3";
             this.box1_3.Size = new System.Drawing.Size(60, 55);
@@ -169,7 +165,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box1_4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box1_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box1_4.Location = new System.Drawing.Point(293, 0);
+            this.box1_4.Location = new System.Drawing.Point(327, 0);
             this.box1_4.MaxLength = 1;
             this.box1_4.Name = "box1_4";
             this.box1_4.Size = new System.Drawing.Size(60, 55);
@@ -185,7 +181,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box2_1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box2_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box2_1.Location = new System.Drawing.Point(95, 66);
+            this.box2_1.Location = new System.Drawing.Point(129, 61);
             this.box2_1.MaxLength = 1;
             this.box2_1.Name = "box2_1";
             this.box2_1.Size = new System.Drawing.Size(60, 55);
@@ -201,7 +197,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box2_2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box2_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box2_2.Location = new System.Drawing.Point(161, 66);
+            this.box2_2.Location = new System.Drawing.Point(195, 61);
             this.box2_2.MaxLength = 1;
             this.box2_2.Name = "box2_2";
             this.box2_2.Size = new System.Drawing.Size(60, 55);
@@ -217,7 +213,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box2_3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box2_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box2_3.Location = new System.Drawing.Point(227, 66);
+            this.box2_3.Location = new System.Drawing.Point(261, 61);
             this.box2_3.MaxLength = 1;
             this.box2_3.Name = "box2_3";
             this.box2_3.Size = new System.Drawing.Size(60, 55);
@@ -233,7 +229,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box2_4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box2_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box2_4.Location = new System.Drawing.Point(293, 66);
+            this.box2_4.Location = new System.Drawing.Point(327, 61);
             this.box2_4.MaxLength = 1;
             this.box2_4.Name = "box2_4";
             this.box2_4.Size = new System.Drawing.Size(60, 55);
@@ -249,7 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box3_1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box3_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box3_1.Location = new System.Drawing.Point(95, 132);
+            this.box3_1.Location = new System.Drawing.Point(129, 122);
             this.box3_1.MaxLength = 1;
             this.box3_1.Name = "box3_1";
             this.box3_1.Size = new System.Drawing.Size(60, 55);
@@ -265,7 +261,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box3_2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box3_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box3_2.Location = new System.Drawing.Point(161, 132);
+            this.box3_2.Location = new System.Drawing.Point(195, 122);
             this.box3_2.MaxLength = 1;
             this.box3_2.Name = "box3_2";
             this.box3_2.Size = new System.Drawing.Size(60, 55);
@@ -281,7 +277,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box3_3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box3_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box3_3.Location = new System.Drawing.Point(227, 132);
+            this.box3_3.Location = new System.Drawing.Point(261, 122);
             this.box3_3.MaxLength = 1;
             this.box3_3.Name = "box3_3";
             this.box3_3.Size = new System.Drawing.Size(60, 55);
@@ -297,7 +293,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box3_4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box3_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box3_4.Location = new System.Drawing.Point(293, 132);
+            this.box3_4.Location = new System.Drawing.Point(327, 122);
             this.box3_4.MaxLength = 1;
             this.box3_4.Name = "box3_4";
             this.box3_4.Size = new System.Drawing.Size(60, 55);
@@ -313,7 +309,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box4_1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box4_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box4_1.Location = new System.Drawing.Point(95, 200);
+            this.box4_1.Location = new System.Drawing.Point(129, 183);
             this.box4_1.MaxLength = 1;
             this.box4_1.Name = "box4_1";
             this.box4_1.Size = new System.Drawing.Size(60, 55);
@@ -329,7 +325,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.box4_2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box4_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.box4_2.Location = new System.Drawing.Point(161, 200);
+            this.box4_2.Location = new System.Drawing.Point(195, 183);
             this.box4_2.MaxLength = 1;
             this.box4_2.Name = "box4_2";
             this.box4_2.Size = new System.Drawing.Size(60, 55);
@@ -338,14 +334,41 @@
             this.box4_2.TextChanged += new System.EventHandler(this.box4_2_TextChanged);
             this.box4_2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.box_KeyPress);
             // 
-            // GameScreen
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Nivel: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(-3, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Tiempo: ";
+            // 
+            // lbl_Time
+            // 
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Location = new System.Drawing.Point(51, 22);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(13, 13);
+            this.lbl_Time.TabIndex = 18;
+            this.lbl_Time.Text = "0";
+            // 
+            // ScreenGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(404, 382);
             this.Controls.Add(this.panel1);
-            this.Name = "GameScreen";
+            this.Name = "ScreenGame";
             this.Text = "Nesuko";
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.panel1.ResumeLayout(false);
@@ -373,8 +396,9 @@
         private System.Windows.Forms.TextBox box3_4;
         private System.Windows.Forms.TextBox box4_1;
         private System.Windows.Forms.TextBox box4_2;
-
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Time;
 
     }
 }
