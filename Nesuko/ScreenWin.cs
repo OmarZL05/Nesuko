@@ -12,11 +12,11 @@ namespace Nesuko
 {
     public partial class ScreenWin : Form
     {
-        public ScreenWin(int tiempo, int puntuacion)
+        public ScreenWin(int tiempo, float puntuacion, float puntuacionExtra)
         {
             InitializeComponent();
-            lbl_Time.Text = "en "+tiempo.ToString() + "Segundos";
-            lbl_pts.Text = puntuacion.ToString();
+            lbl_Time.Text = "en "+tiempo.ToString() + " Segundos";
+            lbl_pts.Text = puntuacion + puntuacionExtra+"";
         }
 
         private void button1_Click(object sender, EventArgs e)

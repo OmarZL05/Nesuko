@@ -12,8 +12,6 @@ namespace Nesuko
 {
     public partial class ScreenGame : Form
     {
-        // Tiempo, nombre, puntuación.
-
         private TextBox[,] celdas = new TextBox[4, 4];
         private Timer timer;
 
@@ -25,6 +23,7 @@ namespace Nesuko
             timer.Tick += Timer_Tick;
             timer.Start();
 
+            lbl_nivel.Text = "1";
 
             celdas[0, 0] = box1_1;
             celdas[0, 1] = box1_2;
@@ -52,48 +51,10 @@ namespace Nesuko
             celdas[3, 3].Text = 4 + "";
         }
 
-        // 1m = 2500 pts, 2m = 1600, 3m = 600, 5m = 300, 10m = 0
-
-        // x <= 60 segundos <x<= 120 segundos <x<= 180 segundos <x<= 300 segundos <x<= 600 segundos > x
-        // 60 segs/40 segs
-        // resultado*porcentaje/100
-        // (base/mod)
-        // (60/40)*2500 = 1500 + 100%
-        // (120/70)*1200 = 857
-        // (180/130)*600 = 346
-        // (300/400)
-        // 180/599
-        // (600/601)*0 = 0
-
-        private string prueba() 
-        {
-            int tiempo=0;
-            int puntuacion = 1;
-
-            if (tiempo <= 60) {
-                puntuacion = (60 / tiempo) * 2500;
-            } 
-            else if(tiempo > 60 && tiempo <= 120) { 
-                puntuacion = (120 / tiempo) * 1600;
-            }
-            else if (tiempo > 120 && tiempo <= 600) {
-                puntuacion = (300 / tiempo) * 600;
-            }
-            else if (tiempo > 600)
-            {
-                puntuacion = 0;
-            }
-
-
-            return tiempo.ToString();
-        }
-
-
         public int tiempo = 0;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Actualizar el contenido del Label con la hora actual
-            lbl_Time.Text = tiempo.ToString();
+            lbl_time.Text = tiempo.ToString();
             tiempo++;
         }
 
@@ -112,11 +73,50 @@ namespace Nesuko
         {
         }
 
+        public int errores = 0;
+
+        private void ganar() {
+            timer.Stop();
+            float pts = 0;
+            float ptsExtra = 0;
+            errores *= 2;
+
+            if (this.tiempo <= 60)
+            {
+                pts = (60 / float.Parse(this.tiempo+"") * 2500f);
+            }
+            else if (this.tiempo > 60 && this.tiempo <= 120)
+            {
+                pts = (120 / float.Parse(this.tiempo + "")) * 1600f;
+            }
+            else if (this.tiempo > 120 && this.tiempo <= 600)
+            {
+                pts = (300 / float.Parse(this.tiempo + "")) * 600f;
+            }
+            else if (this.tiempo > 600)
+            {
+                pts = 0;
+            }
+
+            if (errores < 100)
+            {
+                ptsExtra = (pts * (100 - this.errores)) / 100;
+            }
+
+            using (ScreenWin winScreen = new ScreenWin(tiempo, pts, ptsExtra))
+            {
+                this.Hide();
+                winScreen.ShowDialog();
+                this.Dispose();
+            }
+        }
+
         private void ControlMagic(int posX, int posY)
         {
             int x=0,y=0;
             int iguales;
             int win = 0;
+            int errores = 0;
             while (x < 4 && y < 4) 
             {
                 iguales = 0;
@@ -149,7 +149,11 @@ namespace Nesuko
                 {
                     celdas[x, y].BackColor = Colores.soloLectura;
                 }
-                
+
+                if (celdas[posX, posY].BackColor == Colores.sonIguales && celdas[posX, posY].TextLength > 0)
+                {
+                    errores++;
+                }
 
                 if (celdas[x, y].BackColor == Colores.sonIguales)
                 {
@@ -166,38 +170,17 @@ namespace Nesuko
                     x++;
                     y = 0;
                 }
-
+                
 
             }
 
-            Console.WriteLine(win);
+            if (errores >= 1) {
+                this.errores++;
+                lbl_fails.Text = this.errores.ToString();
+            }
+
             if (win == 16) {
-                timer.Stop();
-                int puntuacion=0;
-
-                if (tiempo <= 60)
-                {
-                    puntuacion = (60 / tiempo) * 2500;
-                }
-                else if (tiempo > 60 && tiempo <= 120)
-                {
-                    puntuacion = (120 / tiempo) * 1600;
-                }
-                else if (tiempo > 120 && tiempo <= 600)
-                {
-                    puntuacion = (300 / tiempo) * 600;
-                }
-                else if (tiempo > 600)
-                {
-                    puntuacion = 0;
-                }
-
-                using (ScreenWin winScreen = new ScreenWin(tiempo, puntuacion))
-                {
-                    this.Hide();
-                    winScreen.ShowDialog();
-                    this.Dispose();
-                }
+                ganar();
             }
 
         }
