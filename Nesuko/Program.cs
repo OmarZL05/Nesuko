@@ -10,6 +10,26 @@ namespace Nesuko
     static class Program
     {
 
+        private static int creditos = 0;
+
+        public static int getCreditos()
+        {
+            return creditos;
+        }
+
+        public static void setCreditos(int entrada)
+        {
+            if (entrada >= 0 && entrada <= 10)
+            {
+                creditos = entrada;
+            }
+        }
+
+        public static void addCreditos(int entrada)
+        {
+             creditos += entrada;
+        }
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>

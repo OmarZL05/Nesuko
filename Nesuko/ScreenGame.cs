@@ -24,6 +24,7 @@ namespace Nesuko
             timer.Start();
 
             lbl_nivel.Text = "1";
+            LSG_Creditos.Text = Program.getCreditos().ToString();
 
             celdas[0, 0] = box1_1;
             celdas[0, 1] = box1_2;
@@ -54,8 +55,13 @@ namespace Nesuko
         public int tiempo = 0;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            lbl_time.Text = tiempo.ToString();
+            lbl_time.Text = tiempo+"/180";
             tiempo++;
+            if (tiempo >= 180)
+            {
+                timer.Stop();
+                // gameOver
+            }
         }
 
         private void box_KeyPress(object sender, KeyPressEventArgs e)
@@ -176,7 +182,12 @@ namespace Nesuko
 
             if (errores >= 1) {
                 this.errores++;
-                lbl_fails.Text = this.errores.ToString();
+                lbl_fails.Text = this.errores+"/100";
+                if (this.errores >= 100)
+                {
+                    // gameOver
+                    timer.Stop();
+                }
             }
 
             if (win == 16) {
@@ -294,6 +305,11 @@ namespace Nesuko
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LSG_Creditos_Click(object sender, EventArgs e)
         {
 
         }

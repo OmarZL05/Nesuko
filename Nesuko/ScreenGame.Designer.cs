@@ -53,13 +53,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_nivel = new System.Windows.Forms.Label();
+            this.LSG_Creditos = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Salmon;
+            this.panel1.BackColor = System.Drawing.Color.MediumAquamarine;
             this.panel1.Controls.Add(this.box1_1);
             this.panel1.Controls.Add(this.box4_3);
             this.panel1.Controls.Add(this.box4_4);
@@ -343,9 +345,9 @@
             this.lbl_fails.AutoSize = true;
             this.lbl_fails.Location = new System.Drawing.Point(62, 43);
             this.lbl_fails.Name = "lbl_fails";
-            this.lbl_fails.Size = new System.Drawing.Size(13, 13);
+            this.lbl_fails.Size = new System.Drawing.Size(36, 13);
             this.lbl_fails.TabIndex = 20;
-            this.lbl_fails.Text = "0";
+            this.lbl_fails.Text = "0/100";
             // 
             // label3
             // 
@@ -359,16 +361,16 @@
             // lbl_time
             // 
             this.lbl_time.AutoSize = true;
-            this.lbl_time.Location = new System.Drawing.Point(62, 70);
+            this.lbl_time.Location = new System.Drawing.Point(62, 65);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(13, 13);
+            this.lbl_time.Size = new System.Drawing.Size(36, 13);
             this.lbl_time.TabIndex = 18;
-            this.lbl_time.Text = "0";
+            this.lbl_time.Text = "0/180";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 70);
+            this.label2.Location = new System.Drawing.Point(11, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 17;
@@ -377,7 +379,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 18);
+            this.label1.Location = new System.Drawing.Point(11, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 16;
@@ -385,7 +387,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
             this.panel2.Controls.Add(this.lbl_nivel);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbl_time);
@@ -400,18 +402,39 @@
             // lbl_nivel
             // 
             this.lbl_nivel.AutoSize = true;
-            this.lbl_nivel.Location = new System.Drawing.Point(62, 18);
+            this.lbl_nivel.Location = new System.Drawing.Point(62, 21);
             this.lbl_nivel.Name = "lbl_nivel";
             this.lbl_nivel.Size = new System.Drawing.Size(13, 13);
             this.lbl_nivel.TabIndex = 21;
             this.lbl_nivel.Text = "0";
             // 
+            // LSG_Creditos
+            // 
+            this.LSG_Creditos.AutoSize = true;
+            this.LSG_Creditos.Location = new System.Drawing.Point(66, 2);
+            this.LSG_Creditos.Name = "LSG_Creditos";
+            this.LSG_Creditos.Size = new System.Drawing.Size(13, 13);
+            this.LSG_Creditos.TabIndex = 23;
+            this.LSG_Creditos.Text = "0";
+            this.LSG_Creditos.Click += new System.EventHandler(this.LSG_Creditos_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Creditos";
+            // 
             // ScreenGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSalmon;
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(604, 362);
+            this.Controls.Add(this.LSG_Creditos);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -423,6 +446,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -452,6 +476,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_nivel;
+        private System.Windows.Forms.Label LSG_Creditos;
+        private System.Windows.Forms.Label label5;
 
     }
 }
