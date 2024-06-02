@@ -22,8 +22,10 @@ namespace Nesuko
         private int posSeleccionados = 0;
         private int posicion = 0;
         private char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'S' };
-        public Selector()
+        public ScreenGame screenGame;
+        public Selector(ScreenGame screenGame)
         {
+            this.screenGame = screenGame;
             InitializeComponent();
             // Meto los textBox en variables para poder acceder a ellas mejor
             iniciales[0] = textBox1;
@@ -76,12 +78,13 @@ namespace Nesuko
             else
             {
                 // Este codigo es solo de prueba, editalo a tu gusto
-                Console.Write("Nombre listo");
-                foreach (TextBox x in iniciales)
+                string nombre = string.Empty;
+                for (int i = 0; i < 3; i++)
                 {
-                    Console.Write(" " + x.Text);
+                    nombre += iniciales[i].Text;
                 }
-                Console.WriteLine("");
+                screenGame.jugador = nombre;
+                this.Dispose();
             }
         }
 

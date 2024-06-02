@@ -14,21 +14,105 @@ namespace Nesuko
     {
         private TextBox[,] celdas = new TextBox[4, 4];
         private Timer timer;
+        public string jugador;
 
-        public void generar()
+        public void generarTablero()
         {
             int posX = 0, posY = 0;
             int numero;
             Random rand = new Random();
+            bool sinRepetir = false;
+            int tamaño = rand.Next(1, 5);
+            int[,] usados = new int[3, tamaño];
 
-
-            for (int i = 0; i < rand.Next(1, 10); i++)
+            for (int i = 0; i < tamaño; i++)
             {
+                int y = 0;
                 posX = rand.Next(0, 4);
                 posY = rand.Next(0, 4);
-
                 numero = rand.Next(1, 5);
+
+                sinRepetir = false;
+                while (!sinRepetir)
+                {
+                    if (posX == usados[0, y])
+                    {
+                        posX = rand.Next(0, 4);
+                        sinRepetir = false;
+                    }
+                    else if (usados[0, y] <= 0)
+                    {
+                        usados[0, y] = posX;
+                        sinRepetir = true;
+                    }
+                    else
+                    {
+                        y++;
+                    }
+
+                    if (y == tamaño)
+                    {
+                        y = 0;
+                    }
+                }
+
+                y = 0;
+                sinRepetir = false;
+                while (!sinRepetir)
+                {
+                    if (posY == usados[1, y])
+                    {
+                        posY = rand.Next(0, 4);
+                        sinRepetir = false;
+                    }
+                    else if (usados[1, y] <= 0)
+                    {
+                        usados[1, y] = posY;
+                        sinRepetir = true;
+                    }
+                    else
+                    {
+                        y++;
+                    }
+
+                    if (y == tamaño)
+                    {
+                        y = 0;
+                    }
+                }
+
+                y = 0;
+                sinRepetir = false;
+                while (!sinRepetir)
+                {
+                    // 1 2 3 0 <-- [1]
+                    if (numero == usados[2, y])
+                    {
+                        numero = rand.Next(1, 5);
+                        y = 0;
+                        sinRepetir = false;
+                    }
+                    else if (usados[2, y] <= 0)
+                    {
+                        usados[2, y] = numero;
+                        sinRepetir = true;
+                    }
+                    else
+                    {
+                        y++;
+                    }
+                    
+                    if (y == tamaño)
+                    {
+                        y = 0;
+                    }
+                   
+                }
+
                 celdas[posX, posY].Text = numero.ToString();
+                celdas[posX, posY].BackColor = Colores.soloLectura;
+                celdas[posX, posY].ReadOnly = true;
+               
             }
 
         }
@@ -69,7 +153,7 @@ namespace Nesuko
             celdas[3, 3].BackColor = Colores.soloLectura;
             celdas[3, 3].Text = 4 + "";*/
 
-            generar();
+            generarTablero();
         }
 
         public int tiempo = 0;
@@ -129,12 +213,18 @@ namespace Nesuko
                 ptsExtra = (pts * (100 - this.errores)) / 100;
             }
 
-            using (ScreenWin winScreen = new ScreenWin(tiempo, pts, ptsExtra))
+            this.Hide();
+            using (Selector Sel = new Selector(this) )
             {
-                this.Hide();
-                winScreen.ShowDialog();
-                this.Dispose();
+                Sel.ShowDialog();
             }
+
+            using (ScreenWin winScreen = new ScreenWin(jugador, tiempo, pts, ptsExtra))
+            {
+                winScreen.ShowDialog();
+                
+            }
+            this.Dispose();
         }
 
         private void ControlMagic(int posX, int posY)

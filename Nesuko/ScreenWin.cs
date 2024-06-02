@@ -12,9 +12,10 @@ namespace Nesuko
 {
     public partial class ScreenWin : Form
     {
-        public ScreenWin(int tiempo, float puntuacion, float puntuacionExtra)
+        public ScreenWin(string jugador, int tiempo, float puntuacion, float puntuacionExtra)
         {
             InitializeComponent();
+            label1.Text = "Felicidades <player>, Has ganado".Replace("<player>",jugador);
             lbl_Time.Text = "en "+tiempo.ToString() + " Segundos";
             lbl_pts.Text = puntuacion + puntuacionExtra+"";
         }
