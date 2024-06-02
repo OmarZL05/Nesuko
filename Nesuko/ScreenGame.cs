@@ -15,6 +15,24 @@ namespace Nesuko
         private TextBox[,] celdas = new TextBox[4, 4];
         private Timer timer;
 
+        public void generar()
+        {
+            int posX = 0, posY = 0;
+            int numero;
+            Random rand = new Random();
+
+
+            for (int i = 0; i < rand.Next(1, 10); i++)
+            {
+                posX = rand.Next(0, 4);
+                posY = rand.Next(0, 4);
+
+                numero = rand.Next(1, 5);
+                celdas[posX, posY].Text = numero.ToString();
+            }
+
+        }
+
         public ScreenGame()
         {
             InitializeComponent();
@@ -43,13 +61,15 @@ namespace Nesuko
             celdas[3, 2] = box4_3;
             celdas[3, 3] = box4_4;
 
-            celdas[0, 0].ReadOnly = true;
+            /*celdas[0, 0].ReadOnly = true;
             celdas[0, 0].BackColor = Colores.soloLectura;
             celdas[0, 0].Text = 1 + "";
 
             celdas[3, 3].ReadOnly = true;
             celdas[3, 3].BackColor = Colores.soloLectura;
-            celdas[3, 3].Text = 4 + "";
+            celdas[3, 3].Text = 4 + "";*/
+
+            generar();
         }
 
         public int tiempo = 0;

@@ -39,6 +39,18 @@ namespace Nesuko
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ScreenStart() );
+
+            /*int repetir = 0;
+            while (repetir < 100)
+            {
+                Tablero tablero = new Tablero();
+                tablero.generar();
+                tablero.mostrar();
+                Console.WriteLine("");
+                repetir++;
+            }
+
+            Console.ReadLine();*/
         }
     }
 

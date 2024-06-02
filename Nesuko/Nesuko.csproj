@@ -79,6 +79,7 @@
     <Compile Include="ScreenWin.Designer.cs">
       <DependentUpon>ScreenWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tablero.cs" />
     <EmbeddedResource Include="Selector.resx">
       <DependentUpon>Selector.cs</DependentUpon>
     </EmbeddedResource>
