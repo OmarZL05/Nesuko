@@ -227,7 +227,7 @@ namespace Nesuko
             this.Dispose();
         }
 
-        private void ControlMagic(int posX, int posY)
+        private void verificarTablero(int posX, int posY)
         {
             int x=0,y=0;
             int iguales;
@@ -310,25 +310,25 @@ namespace Nesuko
         private void box1_1_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 0] = box1_1;
-            ControlMagic(0, 0);
+            verificarTablero(0, 0);
         }
 
         private void box1_2_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 1] = box1_2;
-            ControlMagic(0, 1);
+            verificarTablero(0, 1);
         }
 
         private void box1_3_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 2] = box1_3;
-            ControlMagic(0, 2);
+            verificarTablero(0, 2);
         }
 
         private void box1_4_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 3] = box1_4;
-            ControlMagic(0, 3);
+            verificarTablero(0, 3);
         }
 
         // Seccion 2:
@@ -336,25 +336,25 @@ namespace Nesuko
         private void box2_1_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 0] = box2_1;
-            ControlMagic(1, 0);
+            verificarTablero(1, 0);
         }
 
         private void box2_2_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 1] = box2_2;
-            ControlMagic(1, 1);
+            verificarTablero(1, 1);
         }
 
         private void box2_3_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 2] = box2_3;
-            ControlMagic(1, 2);
+            verificarTablero(1, 2);
         }
 
         private void box2_4_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 3] = box2_4;
-            ControlMagic(1, 3);
+            verificarTablero(1, 3);
         }
 
         // Seccion 3:
@@ -362,25 +362,25 @@ namespace Nesuko
         private void box3_1_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 0] = box3_1;
-            ControlMagic(2, 0);
+            verificarTablero(2, 0);
         }
 
         private void box3_2_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 1] = box3_2;
-            ControlMagic(2, 1);
+            verificarTablero(2, 1);
         }
 
         private void box3_3_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 2] = box3_3;
-            ControlMagic(2, 2);
+            verificarTablero(2, 2);
         }
 
         private void box3_4_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 3] = box3_4;
-            ControlMagic(2, 3);
+            verificarTablero(2, 3);
         }
 
         // Seccion 4:
@@ -388,25 +388,25 @@ namespace Nesuko
         private void box4_1_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 0] = box4_1;
-            ControlMagic(3, 0);
+            verificarTablero(3, 0);
         }
 
         private void box4_2_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 1] = box4_2;
-            ControlMagic(3,1);
+            verificarTablero(3,1);
         }
 
         private void box4_3_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 2] = box4_3;
-            ControlMagic(3,2);
+            verificarTablero(3,2);
         }
 
         private void box4_4_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 3] = box4_4;
-            ControlMagic(3,3);
+            verificarTablero(3,3);
         }
 
         private void label1_Click(object sender, EventArgs e)
