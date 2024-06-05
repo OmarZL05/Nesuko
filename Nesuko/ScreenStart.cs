@@ -16,10 +16,12 @@ namespace Nesuko
         public ScreenStart()
         {
             InitializeComponent();
+           
         }
 
         private void MyForm_Load(object sender, EventArgs e)
         {
+            this.Parent.Focus();
         }
 
         private void btn_StartGame_Click(object sender, EventArgs e)
@@ -42,56 +44,36 @@ namespace Nesuko
                     Console.WriteLine("Error: " + err.Message);
                 }
             }
+            if (Program.getCreditos() <= 0)
+            {
+                titulo.Text = "Inserte una moneda";
+            }
+
         }
 
 
         private void btn_OpenRanking_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Ranking Iniciado");
-        }
-
-        private void btn_StartGame_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
+            using (Ranking Rankg = new Ranking())
             {
-                case Keys.Space:
-                        btn_StartGame_Click(null, null);
-                    break;
-                case Keys.X:
-                    Program.addCreditos(1);
-                    SSL_Credits.Text = Program.getCreditos().ToString();
-                    break;
-                case Keys.C:
-                    Program.addCreditos(-1);
-                    SSL_Credits.Text = Program.getCreditos().ToString();
-                    break;
-                case Keys.Down:
-                    break;
-                case Keys.Up:
-                    break;
-                default:
-                    break;
+                Rankg.ShowDialog();
             }
         }
 
-        private void btn_OpenRanking_KeyDown(object sender, KeyEventArgs e)
+        private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
-                case Keys.Space:
-                    btn_OpenRanking_Click(null, null);
-                    break;
-                case Keys.X:
-                    Program.addCreditos(1);
-                    SSL_Credits.Text = Program.getCreditos().ToString();
+                case Keys.S:
+                        btn_StartGame_Click(null, null);
                     break;
                 case Keys.C:
-                    Program.addCreditos(-1);
+                    Program.addCreditos(1);
                     SSL_Credits.Text = Program.getCreditos().ToString();
+                    titulo.Text = "Presiona S para empezar a jugar";
                     break;
-                case Keys.Down:
-                    break;
-                case Keys.Up:
+                case Keys.R:
+                    btn_OpenRanking_Click(null, null);
                     break;
                 default:
                     break;

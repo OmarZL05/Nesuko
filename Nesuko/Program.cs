@@ -30,27 +30,31 @@ namespace Nesuko
              creditos += entrada;
         }
 
+        
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
         static void Main()
-        {   
+        {
+            RankingManager.declarar();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ScreenStart() );
 
-           /* int repetir = 0;
-            while (repetir < 100)
-            {
-                Tablero tablero = new Tablero();
-                tablero.generarTablero();
-                tablero.mostrar();
-                Console.WriteLine("");
-                repetir++;
-                Console.ReadLine();
-            }*/
+            /* int repetir = 0;
+             while (repetir < 100)
+             {
+                 Tablero tablero = new Tablero();
+                 tablero.generarTablero();
+                 tablero.mostrar();
+                 Console.WriteLine("");
+                 repetir++;
+                 Console.ReadLine();
+             }*/
 
+            
             
         }
     }

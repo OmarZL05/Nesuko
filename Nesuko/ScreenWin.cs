@@ -18,6 +18,7 @@ namespace Nesuko
             label1.Text = "Felicidades <player>, Has ganado".Replace("<player>",jugador);
             lbl_Time.Text = "en "+tiempo.ToString() + " Segundos";
             lbl_pts.Text = puntuacion + puntuacionExtra+"";
+            RankingManager.PosicionRanking(jugador, puntuacion + puntuacionExtra);
         }
 
         private void button1_Click(object sender, EventArgs e)

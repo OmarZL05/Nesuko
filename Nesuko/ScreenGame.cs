@@ -13,6 +13,7 @@ namespace Nesuko
     public partial class ScreenGame : Form
     {
         private TextBox[,] celdas = new TextBox[4, 4];
+        private TextBox[,] condicionales = new TextBox[8, 8];
         private Timer timer;
         public string jugador;
 
@@ -144,7 +145,22 @@ namespace Nesuko
             celdas[3, 1] = box4_2;
             celdas[3, 2] = box4_3;
             celdas[3, 3] = box4_4;
-
+            celdas[0, 0].KeyDown += TextBox_Key;
+            celdas[0, 1].KeyDown += TextBox_Key;
+            celdas[0, 2].KeyDown += TextBox_Key;
+            celdas[0, 3].KeyDown += TextBox_Key;
+            celdas[1, 0].KeyDown += TextBox_Key;
+            celdas[1, 1].KeyDown += TextBox_Key;
+            celdas[1, 2].KeyDown += TextBox_Key;
+            celdas[1, 3].KeyDown += TextBox_Key;
+            celdas[2, 0].KeyDown += TextBox_Key;
+            celdas[2, 1].KeyDown += TextBox_Key;
+            celdas[2, 2].KeyDown += TextBox_Key;
+            celdas[2, 3].KeyDown += TextBox_Key;
+            celdas[3, 0].KeyDown += TextBox_Key;
+            celdas[3, 1].KeyDown += TextBox_Key;
+            celdas[3, 2].KeyDown += TextBox_Key;
+            celdas[3, 3].KeyDown += TextBox_Key;
             /*celdas[0, 0].ReadOnly = true;
             celdas[0, 0].BackColor = Colores.soloLectura;
             celdas[0, 0].Text = 1 + "";
@@ -152,6 +168,8 @@ namespace Nesuko
             celdas[3, 3].ReadOnly = true;
             celdas[3, 3].BackColor = Colores.soloLectura;
             celdas[3, 3].Text = 4 + "";*/
+
+
 
             generarTablero();
         }
@@ -164,7 +182,12 @@ namespace Nesuko
             if (tiempo >= 180)
             {
                 timer.Stop();
-                // gameOver
+                this.Hide();
+                using (GameOver Lose = new GameOver())
+                {
+                    Lose.ShowDialog();
+                }
+                this.Dispose();
             }
         }
 
@@ -213,6 +236,8 @@ namespace Nesuko
                 ptsExtra = (pts * (100 - this.errores)) / 100;
             }
 
+
+
             this.Hide();
             using (Selector Sel = new Selector(this) )
             {
@@ -227,7 +252,7 @@ namespace Nesuko
             this.Dispose();
         }
 
-        private void verificarTablero(int posX, int posY)
+        private void ControlMagic(int posX, int posY)
         {
             int x=0,y=0;
             int iguales;
@@ -295,8 +320,14 @@ namespace Nesuko
                 lbl_fails.Text = this.errores+"/100";
                 if (this.errores >= 100)
                 {
-                    // gameOver
                     timer.Stop();
+                    this.Hide();
+                    using (GameOver Lose = new GameOver())
+                    {
+                        Lose.ShowDialog();
+                    }
+                    this.Dispose();
+                    
                 }
             }
 
@@ -306,29 +337,82 @@ namespace Nesuko
 
         }
 
+        private void TextBox_Key(object sender, KeyEventArgs e)
+        {
+            int currentRow = 0;
+            int currentCol = 0;
+
+            // Encontrar la posición actual de la TextBox en la matriz
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (celdas[i, j] == (TextBox)sender)
+                    {
+                        currentRow = i;
+                        currentCol = j;
+                        break;
+                    }
+                }
+            }
+
+            // Moverse entre celdas según la tecla presionada
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    currentRow = Math.Max(0, currentRow - 1);
+                    break;
+                case Keys.Down:
+                    currentRow = Math.Min(3, currentRow + 1);
+                    break;
+                case Keys.Left:
+                    currentCol = Math.Max(0, currentCol - 1);
+                    break;
+                case Keys.Right:
+                    currentCol = Math.Min(3, currentCol + 1);
+                    break;
+                case Keys.D1:
+                    celdas[currentRow, currentCol].Text = "1";
+                    break;
+                case Keys.D2:
+                    celdas[currentRow, currentCol].Text = "2";
+                    break;
+                case Keys.D3:
+                    celdas[currentRow, currentCol].Text = "3";
+                    break;
+                case Keys.D4:
+                    celdas[currentRow, currentCol].Text = "4";
+                    break;
+            }
+
+            // Establecer el foco en la nueva celda
+            celdas[currentRow, currentCol].Focus();
+            e.Handled = true; // Evitar que se procese la tecla en la TextBox actual
+        }
+
         // Seccion 1:
         private void box1_1_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 0] = box1_1;
-            verificarTablero(0, 0);
+            ControlMagic(0, 0);
         }
 
         private void box1_2_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 1] = box1_2;
-            verificarTablero(0, 1);
+            ControlMagic(0, 1);
         }
 
         private void box1_3_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 2] = box1_3;
-            verificarTablero(0, 2);
+            ControlMagic(0, 2);
         }
 
         private void box1_4_TextChanged(object sender, EventArgs e)
         {
             celdas[0, 3] = box1_4;
-            verificarTablero(0, 3);
+            ControlMagic(0, 3);
         }
 
         // Seccion 2:
@@ -336,25 +420,25 @@ namespace Nesuko
         private void box2_1_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 0] = box2_1;
-            verificarTablero(1, 0);
+            ControlMagic(1, 0);
         }
 
         private void box2_2_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 1] = box2_2;
-            verificarTablero(1, 1);
+            ControlMagic(1, 1);
         }
 
         private void box2_3_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 2] = box2_3;
-            verificarTablero(1, 2);
+            ControlMagic(1, 2);
         }
 
         private void box2_4_TextChanged(object sender, EventArgs e)
         {
             celdas[1, 3] = box2_4;
-            verificarTablero(1, 3);
+            ControlMagic(1, 3);
         }
 
         // Seccion 3:
@@ -362,25 +446,25 @@ namespace Nesuko
         private void box3_1_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 0] = box3_1;
-            verificarTablero(2, 0);
+            ControlMagic(2, 0);
         }
 
         private void box3_2_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 1] = box3_2;
-            verificarTablero(2, 1);
+            ControlMagic(2, 1);
         }
 
         private void box3_3_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 2] = box3_3;
-            verificarTablero(2, 2);
+            ControlMagic(2, 2);
         }
 
         private void box3_4_TextChanged(object sender, EventArgs e)
         {
             celdas[2, 3] = box3_4;
-            verificarTablero(2, 3);
+            ControlMagic(2, 3);
         }
 
         // Seccion 4:
@@ -388,25 +472,25 @@ namespace Nesuko
         private void box4_1_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 0] = box4_1;
-            verificarTablero(3, 0);
+            ControlMagic(3, 0);
         }
 
         private void box4_2_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 1] = box4_2;
-            verificarTablero(3,1);
+            ControlMagic(3,1);
         }
 
         private void box4_3_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 2] = box4_3;
-            verificarTablero(3,2);
+            ControlMagic(3,2);
         }
 
         private void box4_4_TextChanged(object sender, EventArgs e)
         {
             celdas[3, 3] = box4_4;
-            verificarTablero(3,3);
+            ControlMagic(3,3);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -424,6 +508,16 @@ namespace Nesuko
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            timer.Stop();
+            this.Dispose();
+        }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

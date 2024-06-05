@@ -21,7 +21,7 @@ namespace Nesuko
         private TextBox[] iniciales = new TextBox[3];
         private int posSeleccionados = 0;
         private int posicion = 0;
-        private char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'S' };
+        private char[] letras = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         public ScreenGame screenGame;
         public Selector(ScreenGame screenGame)
         {
@@ -35,8 +35,11 @@ namespace Nesuko
             {
                 iniciales[i].ReadOnly = true;
                 iniciales[i].KeyDown += PruebaSelector_KeyDown;
-            }            
+            }
+
+            
         }
+
        
         private void PruebaSelector_KeyDown(object sender, KeyEventArgs e)
         {
@@ -134,7 +137,8 @@ namespace Nesuko
                 iniciales[posSeleccionados].Text = string.Empty;
             }
         }
-
+        
+        
 
     }
 }
